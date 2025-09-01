@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Glassmorphic Portfolio</title>
+
+  <!-- Import Poppins font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Smooth scrolling (optional, feels natural) */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Base Reset & Body */
+    body {
+      font-family: "Poppins", sans-serif;
+      margin: 0;
+      padding: 0;
+      background: none;     /* No hard background – inherits site background if embedded */
+      color: #fff;
+      overflow-x: hidden;   /* Prevent sideways scrollbars */
+    }
+
+    /* Utility glass style */
+    .glass {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+    }
+
+    /* Cards Container */
+    .cards {
+      padding: 24px 16px;
+      gap: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      overflow-y: visible; /*  Don’t force extra vertical scrolling */
+    }
+
+    .card {
+      width: 90%;
+      max-width: 900px;
+      padding: 28px;
+      font-size: 1.05em;
+      line-height: 1.6;
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.02);
+    }
+    .cards:hover > .card:not(:hover) {
+      filter: blur(2px);
+      transform: scale(0.97);
+    }
+
+    /* Section Headings */
+    .skill-heading {
+      text-align: center;
+      font-size: 40px;
+      font-weight: 700;
+      margin: 50px auto 30px auto;
+      padding: 12px 20px;
+      display: inline-block;
+    }
+    .skill-heading .dot {
+      color: #ff4444;
+    }
+
+    /* Timeline Sections */
+    .skill-timeline {
+      width: 80%;
+      margin: 0 auto 60px auto;
+      padding: 24px;
+    }
+
+    .skill-item {
+      margin-bottom: 30px;
+      padding-left: 25px;
+      position: relative;
+    }
+    .skill-item::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 12px;
+      height: 12px;
+      background: #1e90ff;
+      border-radius: 50%;
+    }
+    .skill-title {
+      font-weight: 600;
+      font-size: 20px;
+    }
+    .skill-desc {
+      font-size: 15px;
+      margin-top: 6px;
+      color: #f2f2f2;
+    }
+
+    /* 🛠 Tools Section */
+    .tools-section {
+      display: flex;
+      justify-content: center;
+      margin: 30px 0 60px 0;
+    }
+    .tools-img {
+      max-width: 80%;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.3);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      transition: transform 0.3s ease;
+    }
+    .tools-img:hover {
+      transform: scale(1.05);
+    }
+
+    /* RESPONSIVE FIXES */
+    @media (max-width: 768px) {
+      .cards {
+        flex-direction: row;
+        overflow-x: auto;           /* horizontal cards carousel */
+        overflow-y: hidden;
+        gap: 16px;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+      }
+      .card {
+        flex: 0 0 85%;
+        min-height: auto;
+        font-size: 0.95em;
+        padding: 16px;
+        scroll-snap-align: center;
+      }
+      .cards::-webkit-scrollbar {
+        display: none; /* Hide scrollbars for a cleaner mobile carousel */
+      }
+
+      .skill-heading {
+        font-size: 28px;
+      }
+      .skill-timeline {
+        width: 90%;
+        padding: 16px;
+      }
+      .skill-title {
+        font-size: 18px;
+      }
+      .skill-desc {
+        font-size: 13px;
+      }
+      .tools-img {
+        max-width: 95%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Glassmorphic Intro Cards -->
+  <div class="cards">
+    <div class="card glass">
+      <p>
+        A <b>Philomath</b> — someone who finds joy in learning nearly everything.
+        From SVG path creation to Laplace transforms, from UI design to algorithmic problem-solving—I thrive on the intersection of art and logic.
+      </p>
+    </div>
+
+    <div class="card glass">
+      <p>
+        A <b>Graphics Designer</b> with over <b>3 years</b> of experience, now exploring Computer Science and Engineering as a developer.
+      </p>
+    </div>
+
+    <div class="card glass">
+      <p>
+        I often describe myself as a polymath in progress — someone who doesn’t just dabble, but dives deep.  
+      </p>
+    </div>
+  </div>
+
+  <!-- Skills Section -->
+  <div class="skill-heading glass">Skill<span class="dot">.</span></div>
+  <div class="skill-timeline glass">
+    <div class="skill-item">
+      <div class="skill-title">Graphic Design</div>
+      <div class="skill-desc">Creating modern, user-focused designs with balance & clarity.</div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-title">Project Management</div>
+      <div class="skill-desc">Leading teams and delivering projects efficiently.</div>
+    </div>
+  </div>
+
+  <!-- Academics -->
+  <div class="skill-heading glass">Academics<span class="dot">.</span></div>
+  <div class="skill-timeline glass">
+    <div class="skill-item">
+      <div class="skill-title">Daffodil International University</div>
+      <div class="skill-desc">
+        BSc in CSE <br><b>2024 – Ongoing</b>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tools -->
+  <div class="skill-heading glass">Tools<span class="dot">.</span></div>
+  <div class="tools-section">
+    <img src="https://github.com/muntasiractive/portfolio/blob/00bc4e52315d39676915fba8b714e6958b28756c/tools.png?raw=true" class="tools-img glass" alt="Tools">
+  </div>
+
+</body>
+</html>
